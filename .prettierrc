@@ -1,0 +1,8 @@
+{
+  "auto_format_on_save": true,
+  "prettier_options": {
+    "parser": "flow",
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}

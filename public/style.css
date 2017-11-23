@@ -288,8 +288,8 @@ select {
  */
 
 button,
-html input[type="button"], /* 1 */
-input[type="reset"],
+html input[type="button"],
+/* 1 */ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button; /* 2 */
   cursor: pointer; /* 3 */
@@ -428,7 +428,7 @@ th {
 */
 
 * {
-  box-sizing: border-box;;
+  box-sizing: border-box;
 }
 
 html {
@@ -454,18 +454,19 @@ html {
 }
 
 .landing {
-  background-color: rgba(220, 220, 220, .7);
+  background-color: rgba(220, 220, 220, 0.7);
   padding: 15px 30px;
   border-radius: 5px;
 }
 
 .landing > h1 {
-  color: #B10DC9;
+  color: #b10dc9;
   font-family: Skia;
   font-weight: normal;
 }
 
-.landing > input, .landing > form > input {
+.landing > input,
+.landing > form > input {
   width: 100%;
   padding: 10px;
   border-radius: 4px;
@@ -487,7 +488,8 @@ html {
   border-radius: 4px;
 }
 
-.landing > a:hover, .landing > a:focus {
+.landing > a:hover,
+.landing > a:focus {
   background-color: #666;
 }
 
@@ -497,14 +499,15 @@ html {
   border-color: #333;
 }
 
-.details, .search {
+.details,
+.search {
   position: absolute;
   top: 15px;
   left: 15px;
   right: 15px;
   bottom: 15px;
   overflow-y: scroll;
-  background-color: rgba(220, 220, 220, .8);
+  background-color: rgba(220, 220, 220, 0.8);
   padding: 15px 30px;
   border-radius: 5px;
   min-width: 1400px;
@@ -520,7 +523,7 @@ html {
 pre {
   text-align: left;
 }
-
+/*
 // .search > div > a {
 //   width: 30%;
 //   height: 0;
@@ -588,7 +591,7 @@ pre {
 //   margin: 0;
 //   font-size: 13px;
 }
-
+*/
 .search > header + div {
   margin-top: 25px;
 }
@@ -611,12 +614,12 @@ header {
 header > h1 {
   font-family: Skia;
   font-weight: normal;
-  color: #B10DC9;
+  color: #b10dc9;
   margin: 0;
 }
 
 header > h1 > a {
-  color: #B10DC9;
+  color: #b10dc9;
   text-decoration: none;
 }
 
@@ -654,7 +657,8 @@ header > input {
   border-radius: 4px;
 }
 
-.details > section > img, .details > section > h3 {
+.details > section > img,
+.details > section > h3 {
   width: 8%;
 }
 
@@ -665,16 +669,28 @@ header > input {
 }
 
 @-moz-keyframes spin {
-    from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
 }
 @-webkit-keyframes spin {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .details > section > * {
