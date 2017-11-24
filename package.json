@@ -3,7 +3,9 @@
     "api": "node ratingsAPI.js",
     "build": "webpack",
     "watch": "webpack --watch",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "test": "jest",
+    "test:update": "jest-u"    
   },
   "dependencies": {
     "axios": "0.16.1",
