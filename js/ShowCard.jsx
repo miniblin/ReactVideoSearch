@@ -11,7 +11,7 @@ const Wrapper =styled.div`
 `;
 
 const Image = styled.img`
-  width:46%;
+  width:45%;
   float:left;
   margin-right:10px;
 `
