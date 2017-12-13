@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import preload from "../data.json";
-import ShowCard from "./ShowCard";
+import { string } from 'prop-types';
+import React, { Component } from 'react';
+
+import preload from '../data.json';
+import ShowCard from './ShowCard';
 
 class Search extends Component {
   state={
     searchTerm:''
-  }
+  } 
+
   handleSearchTermChange= event=>{
     this.setState({ searchTerm: event.target.value });
   }
@@ -36,3 +39,11 @@ class Search extends Component {
 }
 
 export default Search;
+
+
+Search.propTypes ={
+  poster:string.isRequired,
+  title:string.isRequired,
+  year: string.isRequired,
+  description: string.isRequired
+}
