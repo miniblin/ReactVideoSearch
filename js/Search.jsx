@@ -1,49 +1,36 @@
-import { string } from 'prop-types';
-import React, { Component } from 'react';
-
-import preload from '../data.json';
+import { arrayOf, shape, string } from 'prop-types';
+import React from 'react';
+import {connect} from 'react-redux'
+import Header from './Header';
 import ShowCard from './ShowCard';
 
-class Search extends Component {
-  state={
-    searchTerm:''
-  } 
-
-  handleSearchTermChange= event=>{
-    this.setState({ searchTerm: event.target.value });
-  }
-  render() {
-    return (
-      <div className="search">
-        <header>
-          <h1>hi there</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="Search"
-          />
-        </header>
+ const Search =(props)=> {
+      const {shows, searchTerm} = props
+      return(
+      <div className="search">               
+        <Header showSearch/>
         <div>
-          {preload.shows
+          {shows
             .filter(
               show => 
                 `${show.title} ${show.description}`.toUpperCase()
-                .indexOf(this.state.searchTerm.toUpperCase())>=0
+                .indexOf(searchTerm.toUpperCase())>=0
             )
             .map(show => <ShowCard key={show.imdbID} {...show} />)}
         </div>
       </div>
-    );
+    )
   }
-}
 
-export default Search;
 
+const mapStateToProps= state => ({
+  searchTerm: state.searchTerm
+})
+
+export default connect(mapStateToProps)(Search)
 
 Search.propTypes ={
-  poster:string.isRequired,
-  title:string.isRequired,
-  year: string.isRequired,
-  description: string.isRequired
+ shows:arrayOf(shape()).isRequired,
+ searchTerm: string.isRequired,
+ 
 }
