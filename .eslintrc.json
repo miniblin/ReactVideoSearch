@@ -16,6 +16,7 @@
     "jest":true
   },
   "rules": {
-    "linebreak-style": 0
-  }
+    "linebreak-style": 0,
+    "max-len":["error", {"code":120, "ignoreStrings": true}]
+    }
 }

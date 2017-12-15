@@ -26,7 +26,7 @@ import ShowCard from './ShowCard';
 const mapStateToProps= state => ({
   searchTerm: state.searchTerm
 })
-
+export const Unwrapped = Search
 export default connect(mapStateToProps)(Search)
 
 Search.propTypes ={

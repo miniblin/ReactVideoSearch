@@ -1,29 +1,25 @@
-import { shape } from "prop-types";
-import React, { Component } from "react";
-import axios from "axios";
+import { func, shape, string } from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import Header from "./Header";
-import Spinner from "./Spinner";
+import { getAPIDetails } from './actionCreators';
+import Header from './Header';
+import Spinner from './Spinner';
 
 class Details extends Component {
-  state = {
-    apiData: { imdbRating: "" }
-  };
-
+ 
   componentDidMount() {
-    axios
-      .get(`http://localhost:3000/${this.props.show.imdbID}`)
-      .then(response => {
-        this.setState({ apiData: response.data });
-      });
+    if(!this.props.rating){
+        this.props.getAPIData()
+    }
   }
 
   render() {
     const { show } = this.props;
     let ratingComponent;
 
-    if (this.state.apiData.rating) {
-        ratingComponent = <h3>{this.state.apiData.rating}</h3>
+    if (this.props.rating) {
+        ratingComponent = <h3>{this.props.rating}</h3>
     }
     else{
         ratingComponent =<Spinner/>
@@ -58,8 +54,29 @@ class Details extends Component {
   }
 }
 
-export default Details;
+
+const mapStateToProps = (state,ownProps) => {
+  const apiData = state.apiData[ownProps.show.imdbID] ? state.apiData[ownProps.show.imdbID] : {}
+  return {
+    rating:apiData.rating
+  }
+
+}
+
+const mapDispatchToProps = (dispatch,ownProps) =>({
+  getAPIData(){
+    dispatch(getAPIDetails(ownProps.show.imdbID))
+  }
+}) 
+export default connect(mapStateToProps,mapDispatchToProps)(Details);
 
 Details.propTypes = {
-  show: shape().isRequired
+  show: shape().isRequired,
+  rating: string,
+  getAPIData:func.isRequired
+
 };
+
+Details.defaultProps = {
+  rating:""
+}
