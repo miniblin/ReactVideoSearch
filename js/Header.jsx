@@ -36,7 +36,18 @@ const Header = props => {
   );
 };
 
-export default Header;
+const mapStateToProps = state =>({searchTerm: state.searchTerm})
+
+const mapDispatchToProps = dispatch =>({
+  handleSearchTermChange(event) {
+    dispatch(setSearchTerm(event.target.value))
+  }}
+)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
 
 Header.propTypes ={
     showSearch: bool,

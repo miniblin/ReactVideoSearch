@@ -31,6 +31,5 @@ export default connect(mapStateToProps)(Search)
 
 Search.propTypes ={
  shows:arrayOf(shape()).isRequired,
- searchTerm: string.isRequired,
- 
+ searchTerm: string.isRequired, 
 }

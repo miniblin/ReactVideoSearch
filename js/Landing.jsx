@@ -19,7 +19,7 @@ class Landing extends Component
       <form onSubmit ={this.goToSearch}>
         <input  onChange={this.props.handleSearchTermChange} value= {this.props.searchTerm} type="test" placeholder="search" />
       </form>
-      <Link to="/search">or Browse All</Link>
+      <Link to="/search" onClick={this.props.clearSearchTerm} >or Browse All</Link>
     </div>
     )
 }
@@ -31,7 +31,11 @@ const mapStateToProps = state => ({searchTerm:state.searchTerm})
 const mapDispatchToProps = (dispatch)=>({
   handleSearchTermChange(event) {
     dispatch(setSearchTerm(event.target.value))
+  },
+  clearSearchTerm(){
+    dispatch(setSearchTerm(''))
   }
+  
 })
 
 
@@ -40,5 +44,6 @@ export default connect(mapStateToProps, mapDispatchToProps) (Landing)
 Landing.propTypes={
   searchTerm: string.isRequired,
   handleSearchTermChange: func.isRequired,
+  clearSearchTerm: func.isRequired,
   history: shape().isRequired
 }
